@@ -31,8 +31,8 @@ cursor = conn.cursor()
 
 for user in payload:
     if my_file.exists():  
-        sql = "INSERT INTO github_githubusersdb (id, username, avatar_url, type, url) VALUES (%s, %s,%s, %s,%s)"
-        val = (user.get('id'), user.get('login'), user.get('avatar_url'), user.get('type'), user.get('url') )
+        sql = "INSERT INTO github_githubusersdb (id, username, avatar_url, type, url, html_url) VALUES (%s, %s,%s, %s,%s, %s)"
+        val = (user.get('id'), user.get('login'), user.get('avatar_url'), user.get('type'), user.get('url'), user.get('html_url'))
         cursor.execute(sql, val)
         conn.commit()
         
@@ -61,7 +61,7 @@ for user in payload:
 if my_file.exists():
     cursor.execute("SELECT * FROM github_githubusersdb")
     rows = cursor.fetchall()
-    df = pd.DataFrame(rows, columns=[ 'id', 'username', 'avatar_url', 'type', 'url'])
+    df = pd.DataFrame(rows, columns=[ 'id', 'username', 'avatar_url', 'type', 'url', 'html_url'])
     print (df)
     conn.close()
 
