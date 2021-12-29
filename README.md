@@ -11,6 +11,9 @@ On windows, these are the commands:
 2. To seed the database with any number of users you choose use (and get it printed on the console):
     python seed.py -t <number>
     python seed.py --total <number>
+    
+<!-- STAGE 2 -->
+seed_extended file is now uploaded with configurations to seed POSTGRES DB
   
 
 
