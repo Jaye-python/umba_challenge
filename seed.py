@@ -1,6 +1,7 @@
 import requests
 import sqlite3
 import argparse
+import pandas as pd
 
 
 # CREATE DATABASE
@@ -23,8 +24,9 @@ url = "https://api.github.com/users"
 response = requests.get(url)
 
 # GRAB THE '-t' and '--total' ARGUMENT
-if args.Output:
-    payload = response.json()[:int(args.Output)]
+
+if args.total:
+    payload = response.json()[:int(args.total)]
 else:
     payload = response.json()[:150]
 
@@ -41,5 +43,11 @@ for user in payload:
     })
 
     con.commit()
+
+# OPTIONAL: PRINTS THE DATABASE OBJECTS IN PANDAS DATAFRAME FOR CONFIRMATION
+cur.execute("SELECT *, oid FROM github_users")
+rows = cur.fetchall()
+ed = pd.DataFrame(rows, columns=[ 'id', 'username', 'avatar_url', 'type', 'url', 'oid'])
+print (ed)
 
 con.close()
