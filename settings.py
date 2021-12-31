@@ -48,6 +48,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -55,9 +56,22 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'umbaproject.urls'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+    }
+}
+
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 6
+CACHE_MIDDLEWARE_KEY_PREFIX  = ''
+
 
 TEMPLATES = [
     {
@@ -83,12 +97,12 @@ WSGI_APPLICATION = 'umbaproject.wsgi.application'
 
 DATABASES = {
     		'default': {
-		        'ENGINE': 'django.db.backends.postgresql',
-		        'NAME': 'umba_db',
-		        'HOST' : 'localhost',
-		        'USER' : 'postgres',
-		        'PASSWORD' : '',}
-                }
+		        'ENGINE': 'django.db.backends.mysql',
+		        'NAME': 'github',
+		        'SERVER' : 'localhost',
+		        'USER' : 'root',
+		        'PASSWORD' : '',
+                } }
 
 
 # Password validation
