@@ -35,18 +35,19 @@ Register 'github' under list of INSTALLED_APPS in settings.py
     python manage.py makemigrations
     python manage.py migrate
     
-Copy content of files: views.py, urls.py, settings.py
+Copy content of files: views.py, urls.py, settings.py into respective files auto-created by Django
+    
 Create folder under github titled 'templates', under 'templates' create another folder titled 'github' then drop 'base.html' and 'home.html' in the folder (i.e. github folder)
 Create folder under github titled 'static', under 'static' create another folder titled 'github' then drop 'ss.css' in the folder (i.e. github folder)
     
+    python manage.py createcachetable
     python manage.py runserver
     
 URLS:
     http://127.0.0.1:8000/
     http://127.0.0.1:8000/users/?page=2
     http://127.0.0.1:8000/users/?pagination=3
-    
-    
+   
     
 STAGE 3
     pip install django-rest-framework
@@ -61,7 +62,8 @@ API URLS:
  order_by condition is already programmed in models.py
     
     
-
+STAGE 3
+    
     
     
     
