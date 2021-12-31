@@ -19,14 +19,24 @@ seed_extended file is now uploaded with configurations to seed POSTGRES DB
 
 Django project is used for the application. db password required
     
-Following commands are required:
-    django-admin startproject umbaproject
-    django-admin startapp github
-    ****Register 'github' under list of INSTALLED_APPS in settings.py****
+Following steps and commands are required to start the app from scratch:
+    run>> django-admin startproject umbaproject
+    run>> django-admin startapp github
     
-    pip install psycopg2
-    python manage.py makemigrations
-    python manage.py migrate
+    Create 'urls.py' file in the newly create github app
+    
+    Register 'github' under list of INSTALLED_APPS in settings.py
+    ****provide a password for the database****
+    
+    run>> pip install psycopg2
+    run>> python manage.py makemigrations
+    run>> python manage.py migrate
+    
+    
+    Copy content of files: views.py, urls.py, settings.py
+    Create folder under github titled 'templates', create a folder titled 'github' then drop 'base.html' and 'home.html' in the folder (i.e. github folder)
+    
+    
     python manage.py runserver
     
 URLS:
