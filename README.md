@@ -50,7 +50,8 @@ URLS:
     
 STAGE 3
     pip install django-rest-framework
-****Register 'rest_framework' under list of INSTALLED_APPS in settings.py****
+
+Register 'rest_framework' under list of INSTALLED_APPS in settings.py
     
 API URLS:
     http://127.0.0.1:8000/api/users/profiles/
