@@ -39,6 +39,7 @@ Copy content of files: views.py, urls.py, settings.py into respective files auto
     
 Create folder under github titled 'templates', under 'templates' create another folder titled 'github' then drop 'base.html' and 'home.html' in the folder (i.e. github folder)
 Create folder under github titled 'static', under 'static' create another folder titled 'github' then drop 'ss.css' in the folder (i.e. github folder)
+**** Please check file 'projecttree.docx' to see how files are arranged *****
     
     python manage.py createcachetable
     python manage.py runserver
