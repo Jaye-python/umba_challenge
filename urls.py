@@ -22,7 +22,5 @@ urlpatterns = [
     path('', views.Home.as_view(), name='home'),                                    # URL: http://127.0.0.1:8000/
     path('users/', views.Home.as_view(), name='users'),                             # URL: http://127.0.0.1:8000/users/?page=2 and http://127.0.0.1:8000/users/?pagination=3
 
-#    API URLS   
-    
 
 ]
