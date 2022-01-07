@@ -22,8 +22,6 @@ urlpatterns = [
     path('', include('github.urls')),
     
     # API URLS
-    path ('api/users/profiles/', views.GitHubUsersApi.as_view()),
-    path ('api/users/profiles/id/<id>/', views.UserID.as_view()),
-    path ('api/users/profiles/username/<username>/', views.UserName.as_view()),
+    path ('api/users/profiles/', views.Users.as_view()),
 
 ]
