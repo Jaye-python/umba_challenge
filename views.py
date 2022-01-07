@@ -27,42 +27,39 @@ class Home(ListView):
         return self.paginate_by
     
 
-class GitHubUsersApi(generics.ListAPIView):
-    '''
-    API URL: http://127.0.0.1:8000/api/users/profiles/
-    '''
-    queryset = GithubUsersDB.objects.all()
-    serializer_class = GitHubUsersSerializer
+class Users(APIView, PageNumberPagination):
+    """
+    Examples:
+
+    http://127.0.0.1:8000/api/users/profiles/?username=mojombo
+    http://127.0.0.1:8000/api/users/profiles/?id=1
+    http://127.0.0.1:8000/api/users/profiles/?page=2
+    """
     
 
-class UserID(APIView):
-    """
-    API URL: http://127.0.0.1:8000/api/users/profiles/id/<id>
-    """
-    def get_object(self, id=None):
-        try:
-            return GithubUsersDB.objects.get(pk=id)
-        except GithubUsersDB.DoesNotExist:
-            raise Http404
-
-    def get(self, request, id=None, format=None):
-        user = self.get_object(id)
-        serializer = GitHubUsersSerializer(user)
-        return Response(serializer.data)
-
-
-class UserName(APIView):
-    """
-    API URL: http://127.0.0.1:8000/api/users/profiles/username/<username>
-    """
-    def get_object(self, username=None):
-        try:
-            return GithubUsersDB.objects.get(username=username)
-        except GithubUsersDB.DoesNotExist:
-            raise Http404
-
-    def get(self, request, username=None, format=None):
-        user = self.get_object(username)
-        serializer = GitHubUsersSerializer(user)
+    def get(self, request, id=None, format=None, username=None):
+        idd = self.request.GET.get('id')
+        uss = self.request.GET.get('username')
+        
+        if idd:
+            try:
+                user = GithubUsersDB.objects.get(pk=idd)
+                serializer = GitHubUsersSerializer(user)
+            except GithubUsersDB.DoesNotExist:
+                raise Http404
+        elif uss:
+            try:
+                user = GithubUsersDB.objects.get(username=uss)
+                serializer = GitHubUsersSerializer(user)
+            except GithubUsersDB.DoesNotExist:
+                raise Http404
+        else:
+            try:
+                user = GithubUsersDB.objects.all()
+                results = self.paginate_queryset(user, request, view = self)
+            
+                serializer = GitHubUsersSerializer(results, many=True)
+            except GithubUsersDB.DoesNotExist:
+                raise Http404
         return Response(serializer.data)
     
