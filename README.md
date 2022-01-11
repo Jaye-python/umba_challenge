@@ -1,6 +1,6 @@
 # umba_challenge
 Repo to submit umba challenge
-Watch Video: https://youtu.be/Udv7XBKAUUk
+Watch Video version: https://youtu.be/Udv7XBKAUUk
 
 STAGE 1
 seed.py has been created with option to indicate number of users to seed the database. There is an option below the code that prints the database objects that are seeded just for confirmation and debugging
