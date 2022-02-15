@@ -1,5 +1,6 @@
 # umba_challenge
-Repo to submit umba challenge
+The challenge is to build a Python Django App with an API based on Django rest framework
+
 Watch Video version: https://youtu.be/Udv7XBKAUUk
 
 STAGE 1
