@@ -1,5 +1,11 @@
 # umba_challenge
-The challenge is to build a Python Django App with an API based on Django rest framework
+The challenge is to build a Python Django App that includes an API based on Django rest framework.
+The file seed.py seeds the database by consuming GitHub API and saves their details onto the db.
+
+The database objects are rendered in a paginated mobile-responsive format using Bootstrap
+There is a search functionality that allows searching by GitHub username
+An API endpoint is also included that allows database objects to be accessible via our API (DRF)
+
 
 Watch Video version: https://youtu.be/Udv7XBKAUUk
 
